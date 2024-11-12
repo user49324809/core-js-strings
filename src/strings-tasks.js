@@ -25,12 +25,12 @@ function getStringLength(value) {
   }
   return 0;
 }
-console.log(getStringLength('aaaaa'));
-console.log(getStringLength('b'));
-console.log(getStringLength(''));
-console.log(getStringLength());
-console.log(getStringLength([]));
-console.log(getStringLength(undefined));
+getStringLength('aaaaa');
+getStringLength('b');
+getStringLength('');
+getStringLength();
+getStringLength([]);
+getStringLength(undefined);
 /**
  * Returns true if the value is a string, otherwise returns false.
  *
@@ -48,12 +48,12 @@ console.log(getStringLength(undefined));
 function isString(value) {
   return typeof value === 'string';
 }
-console.log(isString());
-console.log(isString(null));
-console.log(isString([]));
-console.log(isString({}));
-console.log(isString('test'));
-console.log(isString(new String('test')));
+isString();
+isString(null);
+isString([]);
+isString({});
+isString('test');
+isString(new String('test'));
 
 /**
  * Returns the result of concatenation of two strings.
@@ -69,11 +69,11 @@ console.log(isString(new String('test')));
  */
 function concatenateStrings(value1, value2) {
   const array = value1 + value2;
-  console.log(array);
+  return array;
 }
 concatenateStrings('aa', 'bb');
 concatenateStrings('aa', '');
-concatenateStrings('', 'bb')
+concatenateStrings('', 'bb');
 /**
  * Returns the first character of the given string.
  *
@@ -86,7 +86,7 @@ concatenateStrings('', 'bb')
  *   getFirstChar('') => ''
  */
 function getFirstChar(value) {
-  console.log(value[0]);
+  return value[0];
 }
 getFirstChar('John Doe');
 getFirstChar('cat');
@@ -104,7 +104,7 @@ getFirstChar('');
  *   removeLeadingAndTrailingWhitespaces('\t\t\tHello, World! ') => 'Hello, World!'
  */
 function removeLeadingAndTrailingWhitespaces(value) {
-  console.log(value.trim());
+  return value.trim();
 }
 removeLeadingAndTrailingWhitespaces('  Abracadabra');
 removeLeadingAndTrailingWhitespaces('cat ');
@@ -121,7 +121,7 @@ removeLeadingAndTrailingWhitespaces('\t\t\tHello, World! ');
  *   removeLeadingWhitespaces('\t\t\tHello, World! ') => 'Hello, World! '
  */
 function removeLeadingWhitespaces(value) {
-  console.log(value.trimStart());
+  return value.trimStart();
 }
 removeLeadingAndTrailingWhitespaces('  Abracadabra');
 removeLeadingAndTrailingWhitespaces('cat ');
@@ -139,7 +139,7 @@ removeLeadingAndTrailingWhitespaces('\t\t\tHello, World! ');
  *   removeTrailingWhitespaces('\t\t\tHello, World! ') => '\t\t\tHello, World!'
  */
 function removeTrailingWhitespaces(value) {
-  console.log(value.trimEnd());
+  return value.trimEnd();
 }
 removeLeadingAndTrailingWhitespaces('  Abracadabra');
 removeLeadingAndTrailingWhitespaces('cat ');
@@ -158,7 +158,7 @@ removeLeadingAndTrailingWhitespaces('\t\t\tHello, World! ');
  *   repeatString('abc', -2) => ''
  */
 function repeatString(str, times) {
-  console.log(str.repeat(times));
+  return str.repeat(times);
 }
 repeatString('A', 5);
 repeatString('cat', 3);
@@ -179,7 +179,7 @@ repeatString('abc', 2);
  */
 function removeFirstOccurrences(str, value) {
   const final = str.replace(value, '');
-  console.log(final);
+  return final;
 }
 removeFirstOccurrences('To be or not to be', 'be');
 removeFirstOccurrences('I like legends', 'end');
@@ -201,9 +201,9 @@ function removeLastOccurrences(str, value) {
   const lastIndex = str.lastIndexOf(value);
   return str.slice(0, lastIndex) + str.slice(lastIndex + value.length);
 }
-console.log(removeLastOccurrences('To be or not to be', 'be')); // 'To be or not to '
-console.log(removeLastOccurrences('I like legends', 'end'));
-console.log(removeLastOccurrences('ABABAB', 'BA'));
+removeLastOccurrences('To be or not to be', 'be');
+removeLastOccurrences('I like legends', 'end');
+removeLastOccurrences('ABABAB', 'BA');
 /**
  * Calculate the sum of character codes of the given string.
  *
@@ -218,7 +218,7 @@ console.log(removeLastOccurrences('ABABAB', 'BA'));
  */
 function sumOfCodes(str) {
   let result = [...new TextEncoder().encode(str)].reduce((a, b) => a + b);
-  console.log(result);
+  return result;
 }
 sumOfCodes('My String');
 sumOfCodes('12345');
