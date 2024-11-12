@@ -19,10 +19,18 @@
  *   getStringLength(null) => 0
  *   getStringLength(undefined) => 0
  */
-function getStringLength(/* value */) {
-  throw new Error('Not implemented');
+function getStringLength(value) {
+  if (typeof value === 'string') {
+    return value.length;
+  }
+  return 0;
 }
-
+console.log(getStringLength('aaaaa'));
+console.log(getStringLength('b'));
+console.log(getStringLength(''));
+console.log(getStringLength());
+console.log(getStringLength([]));
+console.log(getStringLength(undefined));
 /**
  * Returns true if the value is a string, otherwise returns false.
  *
@@ -37,9 +45,15 @@ function getStringLength(/* value */) {
  *   isString('test') => true
  *   isString(new String('test')) => true
  */
-function isString(/* value */) {
-  throw new Error('Not implemented');
+function isString(value) {
+  return typeof value === 'string';
 }
+console.log(isString());
+console.log(isString(null));
+console.log(isString([]));
+console.log(isString({}));
+console.log(isString('test'));
+console.log(isString(new String('test')));
 
 /**
  * Returns the result of concatenation of two strings.
@@ -53,10 +67,13 @@ function isString(/* value */) {
  *   concatenateStrings('aa', '') => 'aa'.
  *   concatenateStrings('', 'bb') => 'bb'
  */
-function concatenateStrings(/* value1, value2 */) {
-  throw new Error('Not implemented');
+function concatenateStrings(value1, value2) {
+  const array = value1 + value2;
+  console.log(array);
 }
-
+concatenateStrings('aa', 'bb');
+concatenateStrings('aa', '');
+concatenateStrings('', 'bb')
 /**
  * Returns the first character of the given string.
  *
@@ -68,9 +85,12 @@ function concatenateStrings(/* value1, value2 */) {
  *   getFirstChar('cat') => 'c'
  *   getFirstChar('') => ''
  */
-function getFirstChar(/* value */) {
-  throw new Error('Not implemented');
+function getFirstChar(value) {
+  console.log(value[0]);
 }
+getFirstChar('John Doe');
+getFirstChar('cat');
+getFirstChar('');
 
 /**
  * Removes leading and trailing whitespace characters from the string.
@@ -83,10 +103,12 @@ function getFirstChar(/* value */) {
  *   removeLeadingAndTrailingWhitespaces('cat ') => 'cat'
  *   removeLeadingAndTrailingWhitespaces('\t\t\tHello, World! ') => 'Hello, World!'
  */
-function removeLeadingAndTrailingWhitespaces(/* value */) {
-  throw new Error('Not implemented');
+function removeLeadingAndTrailingWhitespaces(value) {
+  console.log(value.trim());
 }
-
+removeLeadingAndTrailingWhitespaces('  Abracadabra');
+removeLeadingAndTrailingWhitespaces('cat ');
+removeLeadingAndTrailingWhitespaces('\t\t\tHello, World! ');
 /**
  * Removes only leading whitespace characters from the string.
  *
@@ -98,9 +120,12 @@ function removeLeadingAndTrailingWhitespaces(/* value */) {
  *   removeLeadingWhitespaces('cat ') => 'cat '
  *   removeLeadingWhitespaces('\t\t\tHello, World! ') => 'Hello, World! '
  */
-function removeLeadingWhitespaces(/* value */) {
-  throw new Error('Not implemented');
+function removeLeadingWhitespaces(value) {
+  console.log(value.trimStart());
 }
+removeLeadingAndTrailingWhitespaces('  Abracadabra');
+removeLeadingAndTrailingWhitespaces('cat ');
+removeLeadingAndTrailingWhitespaces('\t\t\tHello, World! ');
 
 /**
  * Removes only trailing whitespace characters from the string.
@@ -113,10 +138,12 @@ function removeLeadingWhitespaces(/* value */) {
  *   removeTrailingWhitespaces('cat ') => 'cat'
  *   removeTrailingWhitespaces('\t\t\tHello, World! ') => '\t\t\tHello, World!'
  */
-function removeTrailingWhitespaces(/* value */) {
-  throw new Error('Not implemented');
+function removeTrailingWhitespaces(value) {
+  console.log(value.trimEnd());
 }
-
+removeLeadingAndTrailingWhitespaces('  Abracadabra');
+removeLeadingAndTrailingWhitespaces('cat ');
+removeLeadingAndTrailingWhitespaces('\t\t\tHello, World! ');
 /**
  * Returns a string that is repeated the specified number of times.
  *
@@ -130,9 +157,13 @@ function removeTrailingWhitespaces(/* value */) {
  *   repeatString('', 3) => ''
  *   repeatString('abc', -2) => ''
  */
-function repeatString(/* str, times */) {
-  throw new Error('Not implemented');
+function repeatString(str, times) {
+  console.log(str.repeat(times));
 }
+repeatString('A', 5);
+repeatString('cat', 3);
+repeatString('', 3);
+repeatString('abc', 2);
 
 /**
  * Remove the first occurrence of a substring from a string.
@@ -146,9 +177,13 @@ function repeatString(/* str, times */) {
  *   removeFirstOccurrences('I like legends', 'end') => 'I like legs'.
  *   removeFirstOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
-function removeFirstOccurrences(/* str, value */) {
-  throw new Error('Not implemented');
+function removeFirstOccurrences(str, value) {
+  const final = str.replace(value, '');
+  console.log(final);
 }
+removeFirstOccurrences('To be or not to be', 'be');
+removeFirstOccurrences('I like legends', 'end');
+removeFirstOccurrences('ABABAB', 'BA');
 
 /**
  * Remove the last occurrence of a substring from a string.
@@ -162,10 +197,13 @@ function removeFirstOccurrences(/* str, value */) {
  *   removeLastOccurrences('I like legends', 'end') => 'I like legs'.
  *   removeLastOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
-function removeLastOccurrences(/* str, value */) {
-  throw new Error('Not implemented');
+function removeLastOccurrences(str, value) {
+  const lastIndex = str.lastIndexOf(value);
+  return str.slice(0, lastIndex) + str.slice(lastIndex + value.length);
 }
-
+console.log(removeLastOccurrences('To be or not to be', 'be')); // 'To be or not to '
+console.log(removeLastOccurrences('I like legends', 'end'));
+console.log(removeLastOccurrences('ABABAB', 'BA'));
 /**
  * Calculate the sum of character codes of the given string.
  *
@@ -178,10 +216,14 @@ function removeLastOccurrences(/* str, value */) {
  *   sumOfCodes('') => 0
  *   sumOfCodes() => 0
  */
-function sumOfCodes(/* str */) {
-  throw new Error('Not implemented');
+function sumOfCodes(str) {
+  let result = [...new TextEncoder().encode(str)].reduce((a, b) => a + b);
+  console.log(result);
 }
-
+sumOfCodes('My String');
+sumOfCodes('12345');
+sumOfCodes('');
+sumOfCodes();
 /**
  * Checks if a string starts with a specific substring.
  *
@@ -193,10 +235,11 @@ function sumOfCodes(/* str */) {
  *   startsWith('Hello World', 'World') => false
  *   startsWith('Hello World', 'Hello') => true
  */
-function startsWith(/* str, substr */) {
-  throw new Error('Not implemented');
+function startsWith(str, substr) {
+  return str === substr;
 }
-
+startsWith('Hello World', 'World');
+startsWith('Hello World', 'Hello');
 /**
  * Checks if a string ends with a specific substring.
  *
