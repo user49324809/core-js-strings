@@ -85,10 +85,7 @@ concatenateStrings('', 'bb');
  *   getFirstChar('') => ''
  */
 function getFirstChar(value) {
-  if (typeof value !== 'string') {
-    return '';
-  }
-  return value[0] || '';
+  return value.charAt(0);
 }
 getFirstChar('John Doe');
 getFirstChar('cat');
@@ -183,8 +180,11 @@ repeatString('abc', -2);
  *   removeFirstOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
 function removeFirstOccurrences(str, value) {
-  const final = str.replace(value, '');
-  return final;
+  const index = str.indexOf(value);
+  if (index === -1) {
+    return str;
+  }
+  return str.slice(0, index) + str.slice(index + value.length);
 }
 removeFirstOccurrences('To be or not to be', 'be');
 removeFirstOccurrences('I like legends', 'end');
