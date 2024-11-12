@@ -46,14 +46,14 @@ getStringLength(undefined);
  *   isString(new String('test')) => true
  */
 function isString(value) {
-  return typeof value === 'string';
+  return typeof value === 'string' || value instanceof String;
 }
 isString();
 isString(null);
 isString([]);
 isString({});
 isString('test');
-isString(new String('test'));
+isString(String('test'));
 
 /**
  * Returns the result of concatenation of two strings.
@@ -217,7 +217,7 @@ removeLastOccurrences('ABABAB', 'BA');
  *   sumOfCodes() => 0
  */
 function sumOfCodes(str) {
-  let result = [...new TextEncoder().encode(str)].reduce((a, b) => a + b);
+  const result = [...new TextEncoder().encode(str)].reduce((a, b) => a + b);
   return result;
 }
 sumOfCodes('My String');
