@@ -68,8 +68,7 @@ isString(String('test'));
  *   concatenateStrings('', 'bb') => 'bb'
  */
 function concatenateStrings(value1, value2) {
-  const array = value1 + value2;
-  return array;
+  return value1.concat(value2);
 }
 concatenateStrings('aa', 'bb');
 concatenateStrings('aa', '');
@@ -86,7 +85,10 @@ concatenateStrings('', 'bb');
  *   getFirstChar('') => ''
  */
 function getFirstChar(value) {
-  return value[0];
+  if (typeof value !== 'string') {
+    return '';
+  }
+  return value[0] || '';
 }
 getFirstChar('John Doe');
 getFirstChar('cat');
@@ -158,12 +160,15 @@ removeLeadingAndTrailingWhitespaces('\t\t\tHello, World! ');
  *   repeatString('abc', -2) => ''
  */
 function repeatString(str, times) {
+  if (times < 0) {
+    return '';
+  }
   return str.repeat(times);
 }
 repeatString('A', 5);
 repeatString('cat', 3);
 repeatString('', 3);
-repeatString('abc', 2);
+repeatString('abc', -2);
 
 /**
  * Remove the first occurrence of a substring from a string.
@@ -199,6 +204,9 @@ removeFirstOccurrences('ABABAB', 'BA');
  */
 function removeLastOccurrences(str, value) {
   const lastIndex = str.lastIndexOf(value);
+  if (lastIndex === -1) {
+    return str;
+  }
   return str.slice(0, lastIndex) + str.slice(lastIndex + value.length);
 }
 removeLastOccurrences('To be or not to be', 'be');
@@ -217,8 +225,10 @@ removeLastOccurrences('ABABAB', 'BA');
  *   sumOfCodes() => 0
  */
 function sumOfCodes(str) {
-  const result = [...new TextEncoder().encode(str)].reduce((a, b) => a + b);
-  return result;
+  if (typeof str !== 'string') {
+    return 0;
+  }
+  return Array.from(str).reduce((sum, char) => sum + char.charCodeAt(0), 0);
 }
 sumOfCodes('My String');
 sumOfCodes('12345');
@@ -236,7 +246,7 @@ sumOfCodes();
  *   startsWith('Hello World', 'Hello') => true
  */
 function startsWith(str, substr) {
-  return str === substr;
+  return str.startsWith(substr);
 }
 startsWith('Hello World', 'World');
 startsWith('Hello World', 'Hello');
